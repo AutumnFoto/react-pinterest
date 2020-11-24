@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { Link, useHistory } from 'react-router-dom';
+import { Collapse, Navbar}
+import SearchInput from '../SearchInput';
 
 export default class MyNavbar extends Component {
   logMeOut = (e) => {
