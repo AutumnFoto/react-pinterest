@@ -20,13 +20,13 @@ export default function Routes({ user }) {
         />
         <Route
           exact
-          path='/pin-details'
-          component={() => <PinDetails user={user} />}
+          path='/pins'
+          component={() => <Pins user={user} />}
         />
         <Route
           exact
-          path='/pins'
-          component={() => <Pins user={user} />}
+          path='/pins/:id'
+          component={() => <PinDetails user={user} />}
         />
         <Route
           exact
@@ -42,11 +42,6 @@ export default function Routes({ user }) {
           exact
           path='/search/:term/:type'
           component={(props) => <SearchResults {...props} />}
-        />
-        <Route
-          exact
-          path='/board-form'
-          component={() => <BoardForm user={user} />}
         />
         <Route
           exact
