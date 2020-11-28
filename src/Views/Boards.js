@@ -1,6 +1,6 @@
 import React from 'react';
 import { getAllUserBoards } from '../helpers/data/boardData';
-import BoardsCard from '../components/Cards/BoardsCard';
+import BoardsCard from '../components/Cards/BoardCards';
 import Loader from '../components/Loader';
 import getUid from '../helpers/data/authData';
 

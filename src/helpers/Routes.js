@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Home from '../views/Home';
-import BoardForm from '../views/BoardForm';
-import Boards from '../views/Boards';
-import PinDetails from '../views/PinDetails';
-import PinForm from '../views/PinForm';
-import Pins from '../views/Pins';
-import SingleBoard from '../views/SingleBoard';
-import NotFound from '../views/NotFound';
-import SearchResults from '../views/SearchResults';
+import Home from '../Views/Home';
+// import BoardForm from '../Views/BoardForm';
+import Boards from '../Views/Boards';
+import PinDetails from '../Views/PinDetails';
+import PinForm from '../Views/PinForm';
+import Pins from '../Views/Pins';
+import SingleBoard from '../Views/SingleBoard';
+import NotFound from '../Views/NotFound';
+import SearchResults from '../Views/SearchResults';
 
 export default function Routes({ user }) {
   return (

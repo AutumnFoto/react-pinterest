@@ -27,5 +27,6 @@ const updateBoard = (object) => new Promise((resolve, reject) => {
     .then(resolve).catch((error) => reject(error));
 });
 
-
-export { getAllUserBoards, getSingleBoard, createBoard, updateBoard };
+export {
+  getAllUserBoards, getSingleBoard, createBoard, updateBoard,
+};

@@ -1,10 +1,10 @@
 import firebase from 'firebase/app';
-import firebaseConfig from '../data/apiKeys';
+import firebaseConfig from '../apiKeys';
 
 const firebaseApp = () => {
-    if(!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-    }
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
 };
 
 export default firebaseApp;

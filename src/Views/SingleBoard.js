@@ -1,7 +1,7 @@
 import React from 'react';
 import { getBoardPins, getPin } from '../helpers/data/pinData';
 import { getSingleBoard } from '../helpers/data/boardData';
-import PinsCard from '../components/Cards/PinsCard';
+import PinsCard from '../components/Cards/PinCards';
 
 export default class SingleBoard extends React.Component {
   state = {

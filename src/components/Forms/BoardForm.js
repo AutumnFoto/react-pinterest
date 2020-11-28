@@ -11,10 +11,11 @@ export default class BoardForm extends Component {
       userId: this.props.board?.userId || '',
       description: this.props.board?.description || '',
     }
-  componentDidMount() {
-    const userId = getUser();
-    this.setState({ userId });
-  }
+
+    componentDidMount() {
+      const userId = getUser();
+      this.setState({ userId });
+    }
 
   handleChange = (e) => {
     if (e.target.name === 'filename') {

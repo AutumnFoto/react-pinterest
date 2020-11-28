@@ -14,6 +14,6 @@ const Loader = () => (
       </div>
       <div>Loading...</div>
     </div>
-  );
-  
-  export default Loader;
+);
+
+export default Loader;

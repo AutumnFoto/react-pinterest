@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from '../components/Auth';
 import BoardContainer from '../components/BoardContainer';
-import Loader from '../components/Loader';
+// import Loader from '../components/Loader';
 
 export default function Home({ user }) {
   const loadComponent = () => {
