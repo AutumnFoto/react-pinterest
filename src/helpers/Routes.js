@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from '../Views/Home';
-// import BoardForm from '../Views/BoardForm';
+import BoardForm from '../Views/BoardForm';
 import Boards from '../Views/Boards';
 import PinDetails from '../Views/PinDetails';
 import PinForm from '../Views/PinForm';
@@ -20,13 +20,13 @@ export default function Routes({ user }) {
         />
         <Route
           exact
-          path='/pins'
-          component={() => <Pins user={user} />}
+          path='/pin-details'
+          component={() => <PinDetails user={user} />}
         />
         <Route
           exact
-          path='/pins/:id'
-          component={() => <PinDetails user={user} />}
+          path='/pins'
+          component={() => <Pins user={user} />}
         />
         <Route
           exact
@@ -42,6 +42,11 @@ export default function Routes({ user }) {
           exact
           path='/search/:term/:type'
           component={(props) => <SearchResults {...props} />}
+        />
+        <Route
+          exact
+          path='/board-form'
+          component={() => <BoardForm user={user} />}
         />
         <Route
           exact

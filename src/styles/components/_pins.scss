@@ -1,0 +1,27 @@
+.pin-detail-image {
+    width: 50vw
+}
+
+.single-pin-description {
+    font-size: 20px;
+    font-family: $favFont;
+}
+
+.pin-details-name {
+    font-family: $favFont;
+}
+
+.card {
+    align-items: center;
+    width: 18rem;
+}
+
+.pin-to-board {
+    width: 25vw;
+}
+
+.board-select-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}

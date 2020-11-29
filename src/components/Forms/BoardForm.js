@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import getUser from '../../helpers/data/authData';
+import boardData from '../../helpers/data/boardData';
 
-export default class BoardForm extends Component {
+class BoardForm extends Component {
     state = {
       firebaseKey: this.props.board?.firebaseKey || '',
       name: this.props.board?.name || '',
@@ -14,91 +15,88 @@ export default class BoardForm extends Component {
 
     componentDidMount() {
       const userId = getUser();
-      this.setState({ userId });
-    }
-
-  handleChange = (e) => {
-    if (e.target.name === 'filename') {
-      this.setState({ imageUrl: '' });
-      const storageRef = firebase.storage().ref();
-      const imagesRef = storageRef.child(`pinterest/${this.state.userId}/${Date.now()}${e.target.files[0].name}`);
-
-      imagesRef.put(e.target.files[0]).then((snapshot) => {
-        snapshot.ref.getDownloadURL().then((imageUrl) => {
-          this.setState({ imageUrl });
-        });
-      });
-    } else {
       this.setState({
-        [e.target.name]: e.target.value,
+        userId,
       });
     }
-  }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.btn.setAttribute('disabled', 'disabled');
-    if (this.state.firebaseKey === '') {
-      createBoard(this.state)
-        .then(() => {
-          this.props.onUpdate?.();
-          this.setState({ success: true });
+    handleChange = (e) => {
+      if (e.target.name === 'filename') {
+        this.setState({ imageUrl: '' });
+        const storageRef = firebase.storage().ref();
+        const imageRef = storageRef.child(`pinterest/${this.state.userId}/${Date.now()}${e.target.files[0].name}`);
+        imageRef.put(e.target.files[0]).then((snapshot) => {
+          snapshot.ref.getDownloadURL().then((imageUrl) => {
+            this.setState({ imageUrl });
+          });
         });
-    } else {
-      updateBoard(this.state)
-        .then(() => {
-          this.props.onUpdate?.(this.props.board.firebaseKey);
-          this.setState({ success: true });
+      } else {
+        this.setState({
+          [e.target.name]: e.target.value,
         });
-    }
-  }
-
-  render() {
-    const { success } = this.state;
-    return (
-      <>
-      { success && (<div className="alert alert-success" role="alert">Your Board was Updated/Created</div>)
       }
-      <form onSubmit={this.handleSubmit}>
-        <div>
-        <input
-          type='text'
-          name='name'
-          value={this.state.name}
-          onChange={this.handleChange}
-          placeholder='Board Name'
-          className="form-control form-control-lg m-1"
-          required
-        />
-        </div>
-        <div>
-        <input
-          type='text'
-          name='description'
-          value={this.state.description}
-          onChange={this.handleChange}
-          placeholder='Board Description'
-          className="form-control form-control-lg m-1"
-          required
-        />
-        </div>
-        <div>
-        <input
-          type='url'
-          name='imageUrl'
-          value={this.state.imageUrl}
-          onChange={this.handleChange}
-          placeholder='Enter an Image URL or Upload a File'
-          className="form-control form-control-lg m-1"
-          required
-        />
-        </div>
-        <div>
-         <input className="m-2" type="file" id="myFile" name="filename" accept="image/*" onChange={this.handleChange} />
-         </div>
-         <button ref={(btn) => { this.btn = btn; }} className="btn btn-primary m-2">Submit</button>
-      </form>
-      </>
-    );
-  }
+    }
+
+    handleSubmit = (e) => {
+      e.preventDefault();
+
+      if (this.state.firebaseKey === '') {
+        // eslint-disable-next-line import/no-named-as-default-member
+        boardData.createBoard(this.state)
+          .then(() => {
+            this.props.onUpdate();
+          });
+      } else {
+        // eslint-disable-next-line import/no-named-as-default-member
+        boardData.updateBoard(this.state)
+          .then(() => {
+            this.props.onUpdate(this.props.board.firebaseKey);
+          });
+      }
+    }
+
+    render() {
+      return (<form onSubmit={this.handleSubmit}>
+            <h1>Board Form</h1>
+            <input
+              type='text'
+              name='name'
+              value={this.state.name}
+              onChange={this.handleChange}
+              placeholder='Board Name'
+              className='form-control form-control-lg m-1'
+              required
+              />
+            <input
+              type='text'
+              name='description'
+              value={this.state.description}
+              onChange={this.handleChange}
+              placeholder='Board Description'
+              className='form-control form-control-lg m-1'
+              required
+              />
+            <input
+              type='url'
+              name='imageUrl'
+              value={this.state.imageUrl}
+              onChange={this.handleChange}
+              placeholder='Enter an Image URL or Upload a File'
+              className='form-control form-control-lg m-1'
+              required
+              />
+              <input
+              className='m-2'
+              type='file'
+              id='myFile'
+              name='filename'
+              accept='image/*'
+              onChange={this.handleChange}
+              />
+              <button>Submit</button>
+        </form>
+      );
+    }
 }
+
+export default BoardForm;

@@ -1,11 +1,11 @@
 const firebaseConfig = {
-  apiKey: 'AIzaSyB6VoVPdu4k9WeqTbDP97-1fRJlELVmvGY',
-  authDomain: 'react-pinterest-4f3cf.firebaseapp.com',
-  databaseURL: 'https://react-pinterest-4f3cf.firebaseio.com',
-  projectId: 'react-pinterest-4f3cf',
-  storageBucket: 'react-pinterest-4f3cf.appspot.com',
-  messagingSenderId: '423241279676',
-  appId: '1:423241279676:web:a69d60c2306034807808b9',
-  measurementId: 'G-71BQV9TLZ3',
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 };
 export default firebaseConfig;

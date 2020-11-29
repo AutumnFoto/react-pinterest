@@ -1,8 +1,7 @@
-@import 'variables';
 @import './app';
 @import './boards';
 @import './navbar';
-
+@import './pins';
 body {
   background-color: $favColor;
 }

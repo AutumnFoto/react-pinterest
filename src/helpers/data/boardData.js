@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://fir-cows-958ae.firebaseio.com/pinterest-webpack';
+const baseUrl = 'https://react-pinterest-4f3cf.firebaseio.com/';
 
 const getAllUserBoards = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/boards.json?orderBy="userId"&equalTo="${uid}"`).then((response) => {
@@ -29,4 +29,20 @@ const updateBoard = (object) => new Promise((resolve, reject) => {
 
 export {
   getAllUserBoards, getSingleBoard, createBoard, updateBoard,
+};
+const searchBoards = (userId, searchTerm) => new Promise((resolve, reject) => {
+  getAllUserBoards(userId)
+    .then((response) => {
+      const searched = response.filter((board) => board.name.toLowerCase().includes(searchTerm));
+      resolve(searched);
+    }).catch((error) => reject(error));
+});
+
+const deleteBoard = (boardId) => axios.delete(`${baseUrl}/boards/${boardId}.json`);
+
+const deletePinBoard = (firebaseKey) => axios.delete(`${baseUrl}/pin-boards/${firebaseKey}.json`);
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+  getAllUserBoards, getSingleBoard, createBoard, updateBoard, deleteBoard, deletePinBoard, searchBoards,
 };

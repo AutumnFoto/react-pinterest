@@ -1,10 +1,19 @@
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import 'variables';
-
-// COMPONENTS
 @import './components/index.scss';
 
 body {
   background-color: $favColor;
+}
+
+.board-card {
+  width: 18rem;
+  margin: 20px;
+}
+
+.BoardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }

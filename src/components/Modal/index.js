@@ -1,24 +1,36 @@
 import React, { useState } from 'react';
 import {
-  Button, Modal, ModalHeader, ModalBody,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from 'reactstrap';
 
 const AppModal = (props) => {
-  const { className } = props;
+  const {
+    buttonLabel,
+    className,
+    title,
+  } = props;
+
   const [modal, setModal] = useState(false);
+
   const toggle = () => setModal(!modal);
 
   return (
-<div>
-<Button color = {props.btnColor} onClick={toggle}>
-    <i className={`fas ${props.icon} fa-1x`}></i>
-</Button>
-<Modal isOpen={modal} toggle={toggle} className={className}>
-<ModalHeader toggle={toggle}>{props.title}</ModalHeader>
-<ModalBody>{props.children}</ModalBody>
-</Modal>
-</div>
-
+    <div className="m-2">
+      <Button color="success" onClick={toggle}>{buttonLabel}</Button>
+      <Modal isOpen={modal} toggle={toggle} className={className}>
+        <ModalHeader toggle={toggle}>{title}</ModalHeader>
+        <ModalBody>
+          {props.children}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggle}>Cancel</Button>
+        </ModalFooter>
+      </Modal>
+    </div>
   );
 };
 

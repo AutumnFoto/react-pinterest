@@ -1,13 +1,15 @@
 import React from 'react';
 import Auth from '../components/Auth';
-import BoardContainer from '../components/BoardContainer';
-// import Loader from '../components/Loader';
+import Loader from '../components/Loader';
+import HomeComponent from '../components/HomeComponent';
 
 export default function Home({ user }) {
   const loadComponent = () => {
     let component = '';
-    if (user) {
-      component = <BoardContainer />;
+    if (user === null) {
+      component = <Loader />;
+    } else if (user) {
+      component = <HomeComponent />;
     } else {
       component = <Auth />;
     }
